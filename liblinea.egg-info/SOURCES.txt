@@ -1,0 +1,8 @@
+LICENSE
+README.md
+liblinea.py
+setup.py
+liblinea.egg-info/PKG-INFO
+liblinea.egg-info/SOURCES.txt
+liblinea.egg-info/dependency_links.txt
+liblinea.egg-info/top_level.txt
