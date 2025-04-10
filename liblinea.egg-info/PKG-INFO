@@ -1,0 +1,23 @@
+Metadata-Version: 2.1
+Name: liblinea
+Version: 2.0
+Summary: The Core Module for Linea Programming Language
+Home-page: https://github.com/gauthamnair2005/LibLinea
+Author: Gautham Nair
+Author-email: gautham.nair.2005@gmail.com
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# The Linea Core Library
+
+The Linea Programming Language Core Library
+
+## What's new in Linea 2.0 'Coconut'?
+
+* Revaped functions.
+* New syntax for functions and methods.
+* Included math and weblet libraries.
