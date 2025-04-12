@@ -17,8 +17,8 @@ import psutil
 
 # Constants / Linea/LSP reserved keywords
 
-_lspVer = "2.0.0"
-_lineaVer = "2.0.0"
+_lspVer = "2.1.0"
+_lineaVer = "2.1.0"
 _developer = "Gautham Nair"
 BLACK = "\033[0;30m"
 RED = "\033[0;31m"
@@ -681,6 +681,58 @@ class Linea:
 # LSP Class
 
 class LSP(Linea):
+    @staticmethod
+    def displayLSP(param):
+        return param
+    
+    @staticmethod
+    def removeTagsFromLSPCode(LSPCode):
+        if "<?lsp" not in LSPCode or "?>" not in LSPCode:
+            return "Syntax Error: Missing LSP tags"
+        LSPCode = LSPCode.replace("<?lsp", "")
+        LSPCode = LSPCode.replace("?>", "")
+        LSPCode = LSPCode.strip()
+        return LSPCode
+    
+    @staticmethod
+    def evaluate(param):
+        terms = param.split(" ")
+        terms = [term.strip() for term in terms]
+        for i in range(len(terms)):
+            if terms[i] in _lspVariables:
+                terms[i] = _lspVariables[terms[i]]
+            elif terms[i].isdigit():
+                terms[i] = int(terms[i])
+            elif terms[i] in operators:
+                continue
+            else:
+                return f"Syntax Error: Variable '{terms[i]}' not found"
+        return eval(" ".join([str(term) for term in terms]))
+
+    def runJavaScript(param):
+        if param.startswith("get.element.id "):
+            return f'<script>document.getElementById("{param[15:]}")</script>'
+        elif param.startswith("get.element.id.value "):
+            return f'<script>document.getElementById("{param[21:]}").value</script>'
+        elif param.startswith("get.element.id.innerHTML "):
+            return f'<script>document.getElementById("{param[26:]}").innerHTML</script>'
+        elif param.startswith("get.element.id.innerText "):
+            return f'<script>document.getElementById("{param[25:]}").innerText</script>'
+        elif param.startswith("get.element.class "):
+            return f'<script>document.getElementsByClassName("{param[18:]}")</script>'
+        elif param.startswith("get.element.tag "):
+            return f'<script>document.getElementsByTagName("{param[16:]}")</script>'
+        elif param.startswith("get.element.name "):
+            return f'<script>document.getElementsByName("{param[17:]}")</script>'
+        elif param.startswith("get.element.query "):
+            return f'<script>document.querySelector("{param[18:]}")</script>'
+        elif param.startswith("get.element.queryAll "):
+            return f'<script>document.querySelectorAll("{param[21:]}")</script>'
+        elif param.startswith("log "):
+            return f'<script>console.log("{param[4:]}")</script>'
+        else:
+            return f"Syntax Error: Unknown LSP JavaScript '{param}'"
+
     @staticmethod
     def breakPhraseToWords(param):
         sepComp = []
