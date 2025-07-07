@@ -14,11 +14,12 @@ import threading
 import subprocess
 import platform
 import psutil
+import pandas as pd
 
 # Constants / Linea/LSP reserved keywords
 
-_lspVer = "2.1.0"
-_lineaVer = "2.1.0"
+_lspVer = "2.2.0"
+_lineaVer = "2.2.0"
 _developer = "Gautham Nair"
 BLACK = "\033[0;30m"
 RED = "\033[0;31m"
@@ -323,6 +324,18 @@ class Linea:
             err = Error("L-E2", f"Syntax Error: Invalid value in variable declaration")
             err.displayError()
             return
+        
+    @staticmethod
+    def createDataFrame(data):
+        try:
+            # If data is a string representation, try to evaluate it
+            if isinstance(data, str):
+                data = ast.literal_eval(data)
+            df = pd.DataFrame(data)
+            return df
+        except Exception as e:
+            Linea.displayError(f"Error creating DataFrame: {str(e)}")
+            return None
 
     @staticmethod
     def breakPhraseToWords(param, global_context = None):
