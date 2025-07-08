@@ -2,7 +2,11 @@
 
 The Linea Programming Language Core Library
 
-## What's new in LibLinea 2.2.0 'Mango'?
+## What's new in LibLinea 2.2.1 'Mango'?
+
+* Updated the `liblinea_ai` module to include more features [UNSTABLE].
+
+## What was new in LibLinea 2.2.0 'Mango'?
 
 * Introduced new dataframe support.
 * Introduced new data handling features with `liblinea_data` module [UNSTABLE].

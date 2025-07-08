@@ -15,11 +15,12 @@ import subprocess
 import platform
 import psutil
 import pandas as pd
+from liblinea_ai import Inference
 
 # Constants / Linea/LSP reserved keywords
 
-_lspVer = "2.2.0"
-_lineaVer = "2.2.0"
+_lspVer = "2.2.1"
+_lineaVer = "2.2.1"
 _developer = "Gautham Nair"
 BLACK = "\033[0;30m"
 RED = "\033[0;31m"
@@ -697,6 +698,11 @@ class LSP(Linea):
     @staticmethod
     def displayLSP(param):
         return param
+
+    @staticmethod
+    def modelInference(model, input_tensor):
+        result = Inference.runInference(model, input_tensor)
+        return result
     
     @staticmethod
     def removeTagsFromLSPCode(LSPCode):
