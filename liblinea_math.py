@@ -1,4 +1,18 @@
 class Basic:
+    def add2(self, x, y):
+        return x + y
+    
+    def subtract2(self, x, y):
+        return x - y
+    
+    def multiply2(self, x, y):
+        return x * y
+    
+    def divide2(self, x, y):
+        if y == 0:
+            return "Error: Division by zero"
+        return x / y
+    
     def sqrt(self, x):
         return x ** 0.5
     

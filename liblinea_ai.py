@@ -6,6 +6,17 @@ import torch
 import torch.nn as nn
 from liblinea import Linea
 import numpy as np
+import liblinea
+
+class Info:
+    @staticmethod
+    def versionBackend():
+        version = torch.__version__
+        Linea.display(f"PyTorch Backend version: {version}")
+        return version
+    
+    def versionFrontend():
+        Linea.display(f"LibLinea AI version: {liblinea.__version__}")
 
 class Basic:
     @staticmethod

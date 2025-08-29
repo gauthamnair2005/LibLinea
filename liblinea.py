@@ -19,8 +19,8 @@ from liblinea_ai import Inference
 
 # Constants / Linea/LSP reserved keywords
 
-_lspVer = "2.2.1"
-_lineaVer = "2.2.1"
+_lspVer = "2.2.2"
+_lineaVer = "2.2.2"
 _developer = "Gautham Nair"
 BLACK = "\033[0;30m"
 RED = "\033[0;31m"

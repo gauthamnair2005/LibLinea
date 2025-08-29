@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="liblinea",
-    version="2.2.1",
+    version="2.2.2",
     py_modules=["liblinea","liblinea_weblet","liblinea_math","liblinea_network","liblinea_ai","liblinea_data"],
     description="The Core Module(s) for Linea Programming Language",
     long_description=open("README.md").read(),
@@ -15,5 +15,5 @@ setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    python_requires=">=3.12",
+    python_requires=">=3.11",
 )
